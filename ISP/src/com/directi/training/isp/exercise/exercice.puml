@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Door
+class Sensor
+class SensingDoor
+class Timer
+class TimedDoor
+
+interface Door {
+lock() : void
+unlock() : void
+open() : void
+close() : void
+timeOutCallback() : void
+proximityCallback() : void
+}
+
+class Sensor{
++ register(door : Door) : void
+- isPersonClose() : boolean
+}
+
+class SensingDoor{
+- _locked : boolean
+-_opened : boolean
++ lock() : void
++ unlock() : void
++ open() : void
++ close() : void
++ timeOutCallback() : void
++ proximityCallback() : void
+}
+
+class Timer{
++ register(timeOut : long, door : Door) : void
+}
+
+class TimedDoor{
+- {static} TIME_OUT : int = 100
+- _locked : boolean
+- _opened : boolean
++ lock() : void
++ unlock() : void
++ open() : void
++ close() : void
++ timeOutCallback() : void
++ proximityCallback() : void
+}
+
+Sensor ..> Door
+SensingDoor ..|> Door
+SensingDoor --> Sensor
+
+Timer ..> Door
+TimedDoor ..|> Door
+TimedDoor --> Timer
+
+@enduml

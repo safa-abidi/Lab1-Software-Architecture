@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Car
+class CarDao
+class CarRater
+class CarFormatter
+class CarManager
+
+class Car{
+- _id : String
+- _model : String
+- _brand : String
++ getId() : String
++ getModel() : String
++ getBrand() : String
+}
+
+class CarDao{
+- _carsDb : Cars[]
++ getFromDb(carId : String) : Car
++ findAll() : Car[]
+}
+
+class CarFormatter{
++ getCarsNames(cars : Car[]) : String
+}
+
+class CarRater{
++ getBestCar(cars : Car[]) : Car
+}
+
+class CarManager{
+- _carDao : CarDao
+- _carFormatter : CarFormatter
+- _carRater : CarRater
++ getCarById(carId : String) : Car
++ getCarsNames() : String
++ getBestCar() : Car
+
+}
+
+CarDao o-- Car
+CarManager --> CarDao
+CarManager --> CarRater
+CarManager --> CarFormatter
+@enduml
