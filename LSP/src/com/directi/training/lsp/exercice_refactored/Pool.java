@@ -3,10 +3,9 @@ public class Pool
 {
     public void run()
     {
-        Duck donaldDuck = new BasicDuck();
-        Duck electricDuck = new ElectronicDuck();
-        quack(donaldDuck, electricDuck);
-        swim(donaldDuck, electricDuck);
+        Duck donaldDuck = new Duck();
+        quack(donaldDuck);
+        swim(donaldDuck);
     }
 
     private void quack(Duck... ducks)

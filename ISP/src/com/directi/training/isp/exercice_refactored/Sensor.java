@@ -3,7 +3,7 @@ package com.directi.training.isp.exercice_refactored;
 import java.util.Random;
 
 public class Sensor {
-        public void register(SensorProvider sensorProvider)
+        public void register(IProximityDoor sensorProvider)
         {
             while (true) {
                 if (isPersonClose()) {

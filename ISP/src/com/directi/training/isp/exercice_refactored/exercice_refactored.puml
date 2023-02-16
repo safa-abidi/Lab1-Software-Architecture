@@ -1,36 +1,36 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-interface Door
-interface SensorProvider
-interface TimerProvider
+interface IDoor
+interface IProximityDoor
+interface ITimeDoor
 class Sensor
 class Timer
 class SensingDoor
 class TimedDoor
 
-interface Door{
+interface IDoor{
 lock() : void
 unlock() : void
 open() : void
 close() : void
 }
 
-interface SensorProvider{
+interface IProximityDoor{
 proximityCallback() : void
 }
 
-interface TimerProvider{
+interface ITimeDoor{
 timeOutCallback() : void
 }
 
 class Sensor{
-+ register(sensorProvider : SensorProvider) : void
++ register(proximityDoor : IProximityDoor) : void
 - isPersonClose() : boolean
 }
 
 class Timer{
-+ register(timeOut : long, timerProvider : TimerProvider) : void
++ register(timeOut : long, timeDoor : ITimeDoor) : void
 }
 
 class SensingDoor{
@@ -54,15 +54,17 @@ class TimedDoor{
 + timeOutCallback() : void
 }
 
-Sensor ..> SensorProvider
-Timer ..> TimerProvider
 
-SensingDoor ..|> Door
-SensingDoor ..|> SensorProvider
+
+SensingDoor ..|> IProximityDoor
+TimedDoor ..|> ITimeDoor
+
+Sensor ..> IProximityDoor
+Timer ..> ITimeDoor
+
 SensingDoor --> Sensor
-
-TimedDoor ..|> Door
-TimedDoor ..|> TimerProvider
 TimedDoor --> Timer
 
+IProximityDoor --|> IDoor
+ITimeDoor --|> IDoor
 @enduml

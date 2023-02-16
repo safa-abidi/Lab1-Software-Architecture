@@ -1,13 +1,17 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class Duck
+interface IDuck
+class BasicDuck
 class ElectronicDuck
 class Pool
-class ElectronicPool
 
+interface IDuck{
++ quack() : void
++swim() : void
+}
 
-class Duck{
+class BasicDuck{
 + quack() : void
 + swim() : void
 }
@@ -26,13 +30,8 @@ class Pool{
 + swim() : void
 }
 
-class ElectronicPool{
-+ run() : void
-+ quack() : void
-+ swim() : void
-}
+IDuck <|.. BasicDuck
+IDuck <|.. ElectronicDuck
 
-Duck <|- ElectronicDuck
-Pool ..> Duck
-ElectronicPool ..> ElectronicDuck
+Pool ..> IDuck
 @enduml

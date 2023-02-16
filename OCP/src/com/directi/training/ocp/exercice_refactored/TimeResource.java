@@ -1,6 +1,6 @@
 package com.directi.training.ocp.exercice_refactored;
 
-public class TimeResource implements Resource{
+public class TimeResource implements IResource{
     @Override
     public int findFree() {
         return 0;

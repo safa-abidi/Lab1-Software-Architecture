@@ -1,12 +1,12 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-interface Resource
+interface IResource
 class TimeResource
 class SpaceResource
 class ResourceAllocator
 
-interface Resource{
+interface IResource{
 findFree() : Integer
 markBusy(resourceId : Integer) : void
 markFree(resourceId : Integer) : void
@@ -25,13 +25,13 @@ class TimeResource{
 }
 
 class ResourceAllocator{
-+ allocate(resource : Resource) : Integer
-+ free(resource : Resource, resourceId : Integer) : void
++ allocate(resource : IResource) : Integer
++ free(resource : IResource, resourceId : Integer) : void
 }
 
-SpaceResource ..|> Resource
-TimeResource ..|> Resource
+SpaceResource ..|> IResource
+TimeResource ..|> IResource
 
-ResourceAllocator ..> Resource
+ResourceAllocator ..> IResource
 
 @enduml

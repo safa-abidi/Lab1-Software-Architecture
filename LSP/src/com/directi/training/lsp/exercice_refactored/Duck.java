@@ -1,6 +1,14 @@
 package com.directi.training.lsp.exercice_refactored;
 
-public interface Duck {
-    public void quack();
-    public void swim();
+public class Duck {
+
+    public void quack()
+    {
+        System.out.println("Quack...");
+    }
+
+    public void swim()
+    {
+        System.out.println("Swim...");
+    }
 }

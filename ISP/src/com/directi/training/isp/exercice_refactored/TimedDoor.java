@@ -1,6 +1,6 @@
 package com.directi.training.isp.exercice_refactored;
 
-public class TimedDoor implements Door, TimerProvider{
+public class TimedDoor implements ITimeDoor {
     private static final int TIME_OUT = 100;
     private boolean _locked;
     private boolean _opened;
